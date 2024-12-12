@@ -5,9 +5,12 @@
         private const int MAX_LOGIN_ATTEMPTS = 3;
         static void Main(string[] args)
         {
+            // WelcomeMsg Method
             WelcomeMsg("Liam");
+
             // OLD CODE LoginUser("abc");
 
+            //WelcomeUser & LoginUser Method
             if (LoginUser("abc"))
             {
                 Console.WriteLine("Access granted to the application.");
@@ -17,7 +20,7 @@
                 Console.WriteLine("Maximum login attempts exceeded. Application will now exit");
             }
 
-            //User Roles Method
+            //UserRoles Method
             List<string> listOfRoles = new List<string> { "Noob", "Mid", "Sweat" };
             UserRoles(listOfRoles);
         }
