@@ -65,7 +65,7 @@
 
                 if (correctPassword == userInput)
                 {
-                    Console.WriteLine("Login successful!");
+                    Console.WriteLine("\nLogin successful!");
                     return true;
                 }
 
@@ -101,6 +101,8 @@
 
         static void UserRoles(List <string> listOfRoles)
         {
+            Console.WriteLine("\nPlease select a role to assign to your user");
+
             var i = 0;
             foreach (string role in listOfRoles)
             {
@@ -108,20 +110,21 @@
                 Console.WriteLine($"{i}. {role}");
             }
 
-            Console.WriteLine("Please select a role to assign to your user");
             string? roleSelected = Console.ReadLine();
 
             if (string.IsNullOrEmpty(roleSelected))
             {
-                Console.WriteLine("No role selected");
+                Console.WriteLine("\nNo role selected");
             }
-            else if (!listOfRoles.Contains(roleSelected))
+            else if (!listOfRoles.Any(r => r.Equals(roleSelected, StringComparison.OrdinalIgnoreCase)))
+            //else if (!listOfRoles.Contains(roleSelected))
             {
-                Console.WriteLine("Invalid role selected");
+                Console.WriteLine("\nInvalid role selected");
             }
             else
             {
-                Console.WriteLine($"{roleSelected} added to user");
+                string actualRole = listOfRoles.First(r => r.Equals(roleSelected, StringComparison.OrdinalIgnoreCase));
+                Console.WriteLine($"\n{actualRole} added to user");
             }
         }
     }
