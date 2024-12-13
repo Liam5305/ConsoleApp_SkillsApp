@@ -36,11 +36,6 @@
 
         static bool LoginUser(string correctPassword)
         {
-            if (string.IsNullOrEmpty(correctPassword))
-            {
-                throw new ArgumentException("Password cannot be empty or null.", nameof (correctPassword));
-            }
-
             int remainingAttempts = MAX_LOGIN_ATTEMPTS;
 
             while (remainingAttempts > 0)
