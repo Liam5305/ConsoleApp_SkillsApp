@@ -3,6 +3,8 @@
     internal class Program
     {
         private const int MAX_LOGIN_ATTEMPTS = 3;
+
+        private const string LoginInfo = "abc";
         static void Main(string[] args)
         {
             // WelcomeMsg Method
@@ -11,7 +13,7 @@
             // OLD CODE LoginUser("abc");
 
             //WelcomeUser & LoginUser Method
-            if (LoginUser("abc"))
+            if (LoginUser(LoginInfo))
             {
                 Console.WriteLine("Access granted to the application.");
             }
@@ -23,21 +25,13 @@
             //UserRoles Method
             List<string> listOfRoles = new List<string> { "Noob", "Mid", "Sweat" };
             UserRoles(listOfRoles);
+
+            ExitApplication();
         }
 
         static void WelcomeMsg(string message)
         {
             Console.WriteLine($"Welcome, "+ message);
-        }
-
-        static void WelcomeUser(string username)
-        {
-            if (string.IsNullOrEmpty(username))
-            {
-                throw new ArgumentException("Username cannot be empty or null.", nameof(username));
-            }
-
-            Console.WriteLine($"Welcome, {username}");
         }
 
         static bool LoginUser(string correctPassword)
@@ -125,6 +119,21 @@
             {
                 string actualRole = listOfRoles.First(r => r.Equals(roleSelected, StringComparison.OrdinalIgnoreCase));
                 Console.WriteLine($"\n{actualRole} added to user");
+            }
+        }
+
+        static void ExitApplication()
+        {
+            Console.WriteLine("\nAll programs have been ran, do you wish to exit?");
+            string? userInput = Console.ReadLine();
+
+            if (userInput?.ToLower() == "yes")
+            {
+                Console.WriteLine("App Closing");
+            }
+            else
+            {
+                Console.WriteLine("What do you wish to do?");
             }
         }
     }
